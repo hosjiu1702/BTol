@@ -5,22 +5,40 @@ VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BTol", "BTol\BTol.vcxproj", "{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{420C174A-A8D0-4BE0-B1EF-A63A77195125}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Debug|x64.ActiveCfg = Debug|x64
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Debug|x64.Build.0 = Debug|x64
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Debug|x86.ActiveCfg = Debug|Win32
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Debug|x86.Build.0 = Debug|Win32
+		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Release|Any CPU.ActiveCfg = Release|Win32
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Release|x64.ActiveCfg = Release|x64
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Release|x64.Build.0 = Release|x64
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Release|x86.ActiveCfg = Release|Win32
 		{04D4BBE5-A49A-46DB-9D99-6E091F41FDCD}.Release|x86.Build.0 = Release|Win32
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Debug|x64.ActiveCfg = Debug|x64
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Debug|x64.Build.0 = Debug|x64
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Debug|x86.Build.0 = Debug|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Release|x64.ActiveCfg = Release|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Release|x64.Build.0 = Release|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Release|x86.ActiveCfg = Release|Any CPU
+		{420C174A-A8D0-4BE0-B1EF-A63A77195125}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
