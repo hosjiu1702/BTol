@@ -1,5 +1,5 @@
 # BTol &middot; [![Btol License](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-Annotation Tool
+Semi-auto annotation tool for labelling training data and validating data (deep learning)
 ## Introduction
  - I created Btol by using C# for GUI and it's backend use C++ /Cli for wrapping [OpenCV](https://opencv.org/) library to detect and track object (e.g car, truck, ..).
  - Moreover, You can use your model (Low-Quality) yourself to labeling object and then use it for training data or validating data. 
