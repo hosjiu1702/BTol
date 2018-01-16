@@ -8,7 +8,7 @@ Btol is a semi-auto tools for labelling training data or validating data.
 This program is still working in progress ..
 
 ### Installation
- - You can install and develop `Btol` by using [Visual Studio 2017](https://www.visualstudio.com/downloads/) or older version but with v141 toolset intergration on your machine.
+ - You can install and develop `Btol` by using [Visual Studio 2017](https://www.visualstudio.com/downloads/) or older version but with `v141 toolset` intergration on your machine.
 
 #### License
 Btol is AGPL v3 license
