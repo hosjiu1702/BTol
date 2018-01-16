@@ -1,7 +1,6 @@
 //#pragma once
 
 #using <System.Drawing.dll>
-//#using <System>
 #include <opencv2/core/core.hpp>
 using namespace cv;
 

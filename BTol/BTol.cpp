@@ -4,6 +4,7 @@
 
 #include "BTol.h"
 #include "MatToBitmap.h"
+#include "BitmapToMat.h"
 #include "OtsuForm1.h"
 #include "TestingForm.h"
 
@@ -61,8 +62,8 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 		return nullptr;
 	}
 	
-	OtsuForm^ form = gcnew OtsuForm();
-	form->Show();
+	//OtsuForm^ form = gcnew OtsuForm();
+	//form->Show();
 	//form->ShowDialog();
 	//Application::Run();
 
@@ -79,26 +80,26 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 
 		/* Ap dung phan nguong Otsu */
 		Mat grayFrame;
-		cvtColor(frame, grayFrame, COLOR_BGR2GRAY);
-		threshold(grayFrame, grayFrame, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+		//cvtColor(frame, grayFrame, COLOR_BGR2GRAY);
+		//threshold(grayFrame, grayFrame, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
 
 		/* Chuyen Mat -> Bitmap */
-		System::Drawing::Bitmap^ bitmapFrame = MatToBitmap(frame);
+		//System::Drawing::Bitmap^ bitmapFrame = MatToBitmap(frame);
 		//System::Drawing::Bitmap^ bitmapFrame = gcnew System::Drawing::Bitmap(tempBitmapFrame);
 
-		cv::namedWindow("Otsu", WINDOW_NORMAL);
-		cv::resizeWindow("Otsu", 0, 0);
-		//cv::imshow("Otsu", grayFrame);
+		cv::namedWindow("Otsu", WINDOW_AUTOSIZE);
+		//cv::resizeWindow("Otsu", 0, 0);
+		cv::imshow("Otsu", frame);
 
 		/* Hien thi tung Frame (Bitmap) ra Picturebox */
-		
+		/*
 		if (form->pictureBox1->Image != nullptr)
 		{
 			delete form->pictureBox1->Image;
 			form->pictureBox1->Image = nullptr;
 		}
 		form->pictureBox1->Image = bitmapFrame;
-		
+		*/
 		//delete tempBitmapFrame;
 		
 		/* Delay 30ms */
@@ -126,9 +127,15 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 
 System::Drawing::Bitmap^ Btol::RunAnalysis(System::Drawing::Bitmap^ bitmap)
 {
-	return nullptr;
-	//Mat tempFrame;
-	//video
+	Mat inputFrame = BitmapToMat(bitmap);
+	//Mat grayFrame;
+	//cvtColor(inputFrame, grayFrame, COLOR_BGR2GRAY);
+	//threshold(grayFrame, grayFrame, 0, 255, CV_THRESH_BINARY);
+	medianBlur(inputFrame, inputFrame, 5);
+	
+	return MatToBitmap(inputFrame);
+
+	//return nullptr;
 }
 
 /*

@@ -11,8 +11,15 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 
+using FastBitmapLib;
+
 using AForge.Video.DirectShow;
 using AForge.Video;
+
+
+//using Accord;
+//using Accord.Video;
+
 
 namespace WindowsFormsApp1
 {
@@ -91,23 +98,22 @@ namespace WindowsFormsApp1
         {
             if (videoSource == null)
                 return;
-            BTol.Btol btol = new BTol.Btol(videoFile.FileName);
+            //BTol.Btol btol = new BTol.Btol(videoFile.FileName);
 
             /* Delete Init Image if exist */
-            /*
-            if(pictureBox1.Image != null)
+            if (pictureBox1.Image != null)
             {
                 pictureBox1.Image.Dispose();
             }
-            */
-            
+
+            videoSource.NewFrame += new NewFrameEventHandler(getFrame);
+            videoSource.Start();
 
             /* Thuc hien phan tich ket qua video duoc chon */
+            //btol.RunAnalysis();
             
-            //btol.RunAnalysis(videoFile.FileName);
-
-            Form2 runForm = new Form2();
-            runForm.Show();
+            //Form2 runForm = new Form2();
+            //runForm.Show();
             
         }
 
@@ -125,6 +131,7 @@ namespace WindowsFormsApp1
         {
             if (videoSource == null)
                 return;
+            videoSource.NewFrame += new NewFrameEventHandler(newFrameCallback);
             videoSource.Start();
         }
 
@@ -139,12 +146,12 @@ namespace WindowsFormsApp1
             if( result == DialogResult.OK)
             {
                 videoSource = new FileVideoSource(videoFile.FileName);
-                videoSource.NewFrame += new NewFrameEventHandler( newFrameCallback );
+                //videoSource.NewFrame += new NewFrameEventHandler( newFrameCallback );
 
                 label1.Text = "";
 
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox1.ImageLocation = @"D:\Project\AnotationTool\BTol\WindowsFormsApp1\Resources\Play2.png";
+                pictureBox1.ImageLocation = @"..\..\..\Resources\Play2.png";
                 pictureBox1.Load();
             }
         }
@@ -165,6 +172,27 @@ namespace WindowsFormsApp1
             
             /* Display a new Frame */
             displayNewFrame(eventFrame);
+        }
+
+        private void getFrame(object sender, NewFrameEventArgs eventFrame)
+        {
+            Bitmap frame = (Bitmap)eventFrame.Frame.Clone();
+
+            //BTol.Btol btol = new BTol.Btol(); //Warning !!, it can leak your memory
+            
+            if(pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Dispose();
+                //pictureBox1.Image = null;
+            }
+
+            
+            //Bitmap resultFrame = btol.RunAnalysis(frame);
+
+            pictureBox1.Image = frame;
+
+            //System.Threading.Thread.Sleep(30);
+
         }
 
         private void displayNewFrame( NewFrameEventArgs eventFrame )
@@ -196,6 +224,7 @@ namespace WindowsFormsApp1
             */
 
         }
+
 
         
         private void releaseOldFrame()
