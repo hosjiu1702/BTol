@@ -1,6 +1,7 @@
 // This is the main DLL file.
 
 #include "stdafx.h"
+#using <System.Threading.dll>
 
 #include "BTol.h"
 #include "MatToBitmap.h"
@@ -125,6 +126,24 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 	*/
 }
 
+void RunAnalysis()
+{
+	System::Threading::Thread^ th = gcnew System::Threading::Thread(ImplementProcessing);
+}
+
+void ImplementProcessing()
+{
+	VideoCapture video("C:\\Users\\giahu\\Downloads\\Video\\F02_SAU_RUA_DUONG_4h01_AM.avi");
+	while (1)
+	{
+		Mat frame;
+		video >> frame;
+		cvtColor(frame, frame, CV_BGR2GRAY);
+
+		Bitmap^ BitmapFrame = MatToBitmap(frame);
+	}
+}
+
 System::Drawing::Bitmap^ Btol::RunAnalysis(System::Drawing::Bitmap^ bitmap)
 {
 	Mat inputFrame = BitmapToMat(bitmap);
@@ -152,6 +171,6 @@ bool Btol::checkFrame()
 
 void Btol::Testing()
 {
-	TestingForm^ testForm = gcnew TestingForm();
-	testForm->Show();
+	//TestingForm^ testForm = gcnew TestingForm();
+	//testForm->Show();
 }

@@ -27,6 +27,8 @@ namespace BTol {
 
 		System::Drawing::Bitmap^ ApplyOtsuThresholdingAlgorithm();
 		void Testing();
+		void RunAnalysis();
+		void ImplementProcessing();
 		System::Drawing::Bitmap^ RunAnalysis(System::Drawing::Bitmap^ bitmap);
 
 		//bool checkFrame();

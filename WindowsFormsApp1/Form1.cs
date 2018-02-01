@@ -6,12 +6,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 
-using FastBitmapLib;
+//using FastBitmapLib;
 
 using AForge.Video.DirectShow;
 using AForge.Video;
@@ -98,7 +99,7 @@ namespace WindowsFormsApp1
         {
             if (videoSource == null)
                 return;
-            //BTol.Btol btol = new BTol.Btol(videoFile.FileName);
+            BTol.Btol btol = new BTol.Btol(videoFile.FileName);
 
             /* Delete Init Image if exist */
             if (pictureBox1.Image != null)
@@ -106,11 +107,11 @@ namespace WindowsFormsApp1
                 pictureBox1.Image.Dispose();
             }
 
-            videoSource.NewFrame += new NewFrameEventHandler(getFrame);
-            videoSource.Start();
+            //videoSource.NewFrame += new NewFrameEventHandler(getFrame);
+            //videoSource.Start();
 
             /* Thuc hien phan tich ket qua video duoc chon */
-            //btol.RunAnalysis();
+            btol.RunAnalysis();
             
             //Form2 runForm = new Form2();
             //runForm.Show();
@@ -173,6 +174,7 @@ namespace WindowsFormsApp1
             /* Display a new Frame */
             displayNewFrame(eventFrame);
         }
+// ******************* RUN BUTTON ******************************
 
         private void getFrame(object sender, NewFrameEventArgs eventFrame)
         {
@@ -194,7 +196,7 @@ namespace WindowsFormsApp1
             //System.Threading.Thread.Sleep(30);
 
         }
-
+// ====================================================================
         private void displayNewFrame( NewFrameEventArgs eventFrame )
         {
 
