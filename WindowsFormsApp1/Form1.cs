@@ -15,6 +15,7 @@ using FastBitmapLib;
 
 using AForge.Video.DirectShow;
 using AForge.Video;
+using System.Threading;
 
 
 //using Accord;
@@ -96,25 +97,50 @@ namespace WindowsFormsApp1
 
         private void Run_Click(object sender, EventArgs e)
         {
-            if (videoSource == null)
-                return;
-            //BTol.Btol btol = new BTol.Btol(videoFile.FileName);
+            //if (videoSource == null) //Chưa chọn video file -> return
+            //    return;
 
-            /* Delete Init Image if exist */
-            if (pictureBox1.Image != null)
-            {
-                pictureBox1.Image.Dispose();
-            }
+            ///* Delete Image "Play" if exist */
+            //if (pictureBox1.Image != null)
+            //{
+            //    pictureBox1.Image.Dispose();
+            //}
 
+            //Tool.Btol btol = new Tool.Btol(videoFile.FileName);
+            //btol.ApplyOtsuThresholdingAlgorithm();
+
+            Form1 form = new Form1();
+            Thread thread = new Thread(form.ExecuteOpencvThread);
+            thread.Start(this);
+
+            /*
             videoSource.NewFrame += new NewFrameEventHandler(getFrame);
             videoSource.Start();
+            */
 
             /* Thuc hien phan tich ket qua video duoc chon */
             //btol.RunAnalysis();
-            
+
             //Form2 runForm = new Form2();
             //runForm.Show();
             
+        }
+
+        public void ExecuteOpencvThread(Object obj)
+        {
+            Form1 form = (Form1)obj;
+
+            if (form.videoSource == null) //Chưa chọn video file -> return
+                return;
+
+            /* Delete Image "Play" if exist */
+            if (form.pictureBox1.Image != null)
+            {
+                form.pictureBox1.Image.Dispose();
+            }
+
+            Tool.Btol btol = new Tool.Btol(form.videoFile.FileName);
+            btol.ApplyOtsuThresholdingAlgorithm();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -148,7 +174,7 @@ namespace WindowsFormsApp1
                 videoSource = new FileVideoSource(videoFile.FileName);
                 //videoSource.NewFrame += new NewFrameEventHandler( newFrameCallback );
 
-                label1.Text = "";
+                label1.Text = ""; //Delete "Empty"
 
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox1.ImageLocation = @"..\..\..\Resources\Play2.png";
@@ -280,13 +306,13 @@ namespace WindowsFormsApp1
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            BTol.Btol btolDebug = new BTol.Btol();
+            Tool.Btol btolDebug = new Tool.Btol();
             btolDebug.Testing();
         }
 
         private void materialFlatButton9_Click(object sender, EventArgs e)
         {
-            BTol.Btol btolTest = new BTol.Btol(@"C:\Users\PC\Downloads\Video\NgoaiHam.avi");
+            Tool.Btol btolTest = new Tool.Btol(@"C:\Users\PC\Downloads\Video\NgoaiHam.avi");
             btolTest.ApplyOtsuThresholdingAlgorithm();
         }
     }

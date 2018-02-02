@@ -106,7 +106,7 @@
       <AdditionalIncludeDirectories>C:\OpenCV-2.4.13.4\opencv-2.4.13.4\build\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opencv_core2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_core2413d.lib;opencv_core2413.lib;opencv_highgui2413d.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;opencv_imgproc2413d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\OpenCV-2.4.13.4\opencv-2.4.13.4\build\install\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>
       </EntryPointSymbol>
@@ -128,9 +128,11 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>C:\OpenCV-2.4.13.4\opencv-2.4.13.4\build\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_core2413.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\OpenCV-2.4.13.4\opencv-2.4.13.4\build\install\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -154,6 +156,9 @@
     <ClInclude Include="BitmapToMat.h" />
     <ClInclude Include="BTol.h" />
     <ClInclude Include="MatToBitmap.h" />
+    <ClInclude Include="OfficalForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="OtsuForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -166,6 +171,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BTol.cpp" />
+    <ClCompile Include="OfficalForm.cpp" />
     <ClCompile Include="OtsuForm1.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -188,6 +194,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="OfficalForm.resx">
+      <DependentUpon>OfficalForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OtsuForm1.resx">
       <DependentUpon>OtsuForm1.h</DependentUpon>
     </EmbeddedResource>

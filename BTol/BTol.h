@@ -9,7 +9,7 @@
 
 //using namespace System;
 
-namespace BTol {
+namespace Tool {
 
 	public ref class Btol
 	{

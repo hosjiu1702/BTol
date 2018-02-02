@@ -7,6 +7,7 @@
 #include "BitmapToMat.h"
 #include "OtsuForm1.h"
 #include "TestingForm.h"
+#include "OfficalForm.h"
 
 #include "msclr\marshal_cppstd.h"
 #include <iostream>
@@ -14,7 +15,7 @@
 using namespace std;
 using namespace cv;
 using namespace System;
-using namespace BTol;
+using namespace Tool;
 
 //using namespace WindowsFormsApp1;
 
@@ -41,7 +42,7 @@ Btol::~Btol()
 	
 }
 
-System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
+System::Drawing::Bitmap^ Tool::Btol::ApplyOtsuThresholdingAlgorithm()
 {
 
 	if (_nameOfVideoFile_Managed == nullptr)
@@ -67,6 +68,9 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 	//form->ShowDialog();
 	//Application::Run();
 
+	OfficalForm^ form = gcnew OfficalForm();
+	form->Show();
+
 	while (true)
 	{
 		Mat frame;
@@ -84,26 +88,26 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 		//threshold(grayFrame, grayFrame, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
 
 		/* Chuyen Mat -> Bitmap */
-		//System::Drawing::Bitmap^ bitmapFrame = MatToBitmap(frame);
+		System::Drawing::Bitmap^ bitmapFrame = MatToBitmap(frame);
 		//System::Drawing::Bitmap^ bitmapFrame = gcnew System::Drawing::Bitmap(tempBitmapFrame);
 
-		cv::namedWindow("Otsu", WINDOW_AUTOSIZE);
-		//cv::resizeWindow("Otsu", 0, 0);
-		cv::imshow("Otsu", frame);
+		//cv::namedWindow("Otsu", WINDOW_AUTOSIZE);
+		//cv::imshow("Otsu", frame);
 
 		/* Hien thi tung Frame (Bitmap) ra Picturebox */
-		/*
+		
 		if (form->pictureBox1->Image != nullptr)
 		{
 			delete form->pictureBox1->Image;
 			form->pictureBox1->Image = nullptr;
 		}
+
 		form->pictureBox1->Image = bitmapFrame;
-		*/
+		
 		//delete tempBitmapFrame;
 		
 		/* Delay 30ms */
-		cv::waitKey(10);
+		//cv::waitKey(1);
 		//System::Threading::Thread::Sleep();
 	}		
 		
@@ -152,6 +156,6 @@ bool Btol::checkFrame()
 
 void Btol::Testing()
 {
-	TestingForm^ testForm = gcnew TestingForm();
-	testForm->Show();
+	//TestingForm^ testForm = gcnew TestingForm();
+	//testForm->Show();
 }
