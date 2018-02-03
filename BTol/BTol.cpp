@@ -126,12 +126,12 @@ System::Drawing::Bitmap^ BTol::Btol::ApplyOtsuThresholdingAlgorithm()
 	*/
 }
 
-void RunAnalysis()
+void Btol::RunAnalysis()
 {
-	System::Threading::Thread^ th = gcnew System::Threading::Thread(ImplementProcessing);
+	//System::Threading::Thread^ th = gcnew System::Threading::Thread(ImplementProcessing);
 }
 
-void ImplementProcessing()
+void Btol::ImplementProcessing()
 {
 	VideoCapture video("C:\\Users\\giahu\\Downloads\\Video\\F02_SAU_RUA_DUONG_4h01_AM.avi");
 	while (1)

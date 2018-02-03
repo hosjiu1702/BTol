@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
         {
             if (videoSource == null)
                 return;
-            BTol.Btol btol = new BTol.Btol(videoFile.FileName);
+            //BTol.Btol btol = new BTol.Btol(videoFile.FileName);
 
             /* Delete Init Image if exist */
             if (pictureBox1.Image != null)
@@ -107,11 +107,14 @@ namespace WindowsFormsApp1
                 pictureBox1.Image.Dispose();
             }
 
+            Form2 form = new Form2();
+            form.Show();
+
             //videoSource.NewFrame += new NewFrameEventHandler(getFrame);
             //videoSource.Start();
 
             /* Thuc hien phan tich ket qua video duoc chon */
-            btol.RunAnalysis();
+            //btol.RunAnalysis();
             
             //Form2 runForm = new Form2();
             //runForm.Show();
